@@ -9,6 +9,7 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
+import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -24,6 +25,42 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+  public static final class WristConstants {
+    
+    public static final int kPivotCanId = 0; // TBD
+    public static final int kRollerCanId = 0; // TBD
+    public static final double kPivotGearRatio = 0; // TBD
+    public static final double kPivotPositionConversionFactor = 360 * kPivotGearRatio;
+
+    public static final double kPivotZeroOffset = 0; // TBD
+    public static final double kPivotKinematicOffset = 0; // TBD
+    public static final double kPivotP = 0; // TBD
+
+    public static final double kRollerInputVoltage = -1; // TBD;
+    public static final double kRollerOutputVoltage = 1; // TBD;
+
+  }
+
+  public static final class ArmConstants {
+
+    public static final int kShoulderCanId = 0; // TBD
+    public static final int kTelescopeCanId = 0; // TBD
+    public static final double kShoulderGearRatio = 0; // TBD
+    public static final double kShoulderPositionConversionFactor = 360 * kShoulderGearRatio;
+    public static final double kShoulderZeroOffset = 0; // TBD
+    public static final double kShoulderKinematicOffset = 0; // TBD
+
+    public static final Constraints kShoulderConstraints = new Constraints(0, 0); // TBD
+    public static final double kShoulderP = 0; // TBD
+
+    public static final Constraints kTelescopeConstraints = new Constraints(0, 0); // TBD
+    public static final double kTelescopeP = 0;
+    public static final double kZeroTelescopeVoltage = -0.2; // TBD
+    
+    
+  }
+
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
