@@ -11,6 +11,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
+import frc.utils.ArmPreset;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -57,6 +58,21 @@ public final class Constants {
     public static final Constraints kTelescopeConstraints = new Constraints(0, 0); // TBD
     public static final double kTelescopeP = 0;
     public static final double kZeroTelescopeVoltage = -0.2; // TBD
+
+    public static final double shoulderPositionTolerance = 0; // TBD
+    public static final double telescopePositionTolerance = 0; // TBD
+
+
+    public static final ArmPreset kBackConeHighPosition = new ArmPreset(0, 0); // TBD
+    public static final ArmPreset kBackConeMiddlePosition = new ArmPreset(0, 0); // TBD
+    public static final ArmPreset kBackConeLowPosition = new ArmPreset(0, 0); // TBD
+
+    public static final ArmPreset kBackCubeHighPosition = new ArmPreset(0, 0); // TBD
+    public static final ArmPreset kBackCubeMiddlePosition = new ArmPreset(0, 0); // TBD
+    public static final ArmPreset kBackCubeLowPosition = new ArmPreset(0, 0); // TBD
+
+    public static final ArmPreset kFrontShelfIntakePosition = new ArmPreset(0, 0); // TBD
+    public static final ArmPreset kFrontFloorIntakePosition = new ArmPreset(0, 0); // TBD
     
     
   }

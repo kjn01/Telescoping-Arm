@@ -13,10 +13,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 
 import frc.robot.Constants.ArmConstants;
+import frc.utils.ArmPreset;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.ElevatorFeedforward;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
@@ -55,6 +58,9 @@ public class Arm extends SubsystemBase {
     telescopeController = new ProfiledPIDController(0, 0, 0, ArmConstants.kTelescopeConstraints);
     telescopeController.setP(ArmConstants.kTelescopeP);
     telescopeFeedforward = new ElevatorFeedforward(0, 0, 0); // TBD
+
+    shoulderController.setTolerance(ArmConstants.shoulderPositionTolerance);
+    telescopeController.setTolerance(ArmConstants.telescopePositionTolerance);
   }
 
   public double getShoulderAngle() {
@@ -89,6 +95,15 @@ public class Arm extends SubsystemBase {
     telescopeMotor.setVoltage(voltage);
 
     SmartDashboard.putNumber("Telescope Voltage", voltage);
+  }
+
+  public void setPosition(ArmPreset armPreset) {
+    setTargetShoulderAngle(armPreset.shoulderAngle);
+    setTargetTelescopePosition(armPreset.telescopePosition);
+  }
+
+  public InstantCommand setPositionCommand(ArmPreset armPreset) {
+    return new InstantCommand(() -> setPosition(armPreset));
   }
 
 
